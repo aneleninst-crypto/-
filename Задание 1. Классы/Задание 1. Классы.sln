@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Задание 1. Классы", "Задание 1. Классы\Задание 1. Классы.csproj", "{7BCCDD16-9397-4238-8679-3FB5808D5958}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BCCDD16-9397-4238-8679-3FB5808D5958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BCCDD16-9397-4238-8679-3FB5808D5958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BCCDD16-9397-4238-8679-3FB5808D5958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BCCDD16-9397-4238-8679-3FB5808D5958}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
