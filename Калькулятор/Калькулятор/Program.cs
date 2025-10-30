@@ -30,23 +30,24 @@ static string[] ParseExpression(string input)
     return input.Trim().Split(" ");
 }
 
-static double FunctionSelector(double operand1, double operand2, char operatorr)
-{
-    switch (operatorr)
+
+static double FunctionSelector (double operand1, double operand2, char operatorr)
+{ 
+    Dictionary<char, Func<double, double, double>> operations = new Dictionary<char, Func<double, double, double>>
     {
-        case '+':
-            return Add(operand1, operand2);
-        case '-':
-            return Subtraction(operand1, operand2);
-        case '*':
-            return Multiplication(operand1, operand2);
-        case '/':
-            return Divide(operand1, operand2);
-        case '%':
-            return Modulo(operand1, operand2);
-        case '^' :
-            return Exponentiation(operand1, operand2);
-        default:
+        { '+', Add },
+        { '-', Subtraction },
+        { '*', Multiplication },
+        { '/', Divide },
+        { '%', Modulo },
+        { '^', Exponentiation },
+    }; 
+    if (operations.TryGetValue(operatorr, out var operation))
+    {
+        return operation(operand1, operand2);
+    }
+    else
+    {
             throw new ArgumentException("Неизвестный оператор");
     }
 }
