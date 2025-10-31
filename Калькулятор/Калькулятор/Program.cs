@@ -60,17 +60,18 @@ public class Calculator
 
     public double ProcessUserInput(string input)
     {
-        var numbers = ParseExpression(input);
-        var operand1 = double.Parse(numbers[0]);
-        var operand2 = double.Parse(numbers[2]);
-        var operatorr = char.Parse(numbers[1]);
+        ParseExpression(input, out double operand1, out double operand2, out char operatorr);
 
         return FunctionSelector(operand1,operand2,operatorr);
     }
 
-    static string[] ParseExpression(string input)
+    static void ParseExpression(string input, out double operand1, out double operand2, out char operatorr)
     {
-        return input.Trim().Split(" ");
+        var numbers =  input.Trim().Split(" ");
+         operand1 = double.Parse(numbers[0]);
+         operand2 = double.Parse(numbers[2]); 
+         operatorr = char.Parse(numbers[1]);
+        
     }
 
     private double FunctionSelector (double operand1, double operand2, char operatorr)
