@@ -15,7 +15,7 @@ Console.WriteLine(filterd.Count());
 
 
 
-List<Person> FilterPersons(List<Person> all, string firstName = null, string lastName = null, int age = 0)
+List<Person> FilterPersons(List<Person> all, string firstName = null, string lastName = null, int? age = null )
 {
     IEnumerable<Person> filterPersons = all;
     if (firstName != null)
@@ -28,7 +28,7 @@ List<Person> FilterPersons(List<Person> all, string firstName = null, string las
         filterPersons = filterPersons.Where(person => person.LastName.Contains(lastName));
     }
 
-    if (age != 0)
+    if (age != null)
     {
         filterPersons = filterPersons.Where(person => person.Age == age);
     }
