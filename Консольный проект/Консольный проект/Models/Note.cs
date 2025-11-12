@@ -7,7 +7,7 @@ public class Note
     public string Description { get; set; }
     public DateTime CreatedDate { get; set; }
     public bool IsCompleted { get; set; } = false;
-    public User User { get; set; }  
+    public User User { get; set; }  // get-set какие то не используются, стоит либо убрать, либо сделать init
 
     public Note(int id, string title, string description, DateTime createdDate, User user)
     {
