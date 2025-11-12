@@ -8,7 +8,7 @@ namespace Консольный_проект.Services;
 public class NoteRepository : INoteRepository
 {
     private List<Note> _notes;
-    private const string _noteFile = "notes.json";
+    private const string _noteFile = "notes.json"; // Константы называются с больших букв обычно. Хотя тут приватные они, так что ситуация двоякая, лучше с большой просто
 
     public NoteRepository()
     {
@@ -32,14 +32,14 @@ public class NoteRepository : INoteRepository
         return note;
     }
 
-    public void AddNote(string title, string description, DateTime createdDate, User user)
+    public void AddNote(string title, string description, DateTime createdDate, User user) // в интерфейсе поля nullable, а тут нет
         => ExecuteWithSave(() =>
         {
             var note = CreateNote(title, description, createdDate, user);
             _notes.Add(note);
         });
 
-    public void UpdateNote(int id, string title = null, string description = null)
+    public void UpdateNote(int id, string title = null, string description = null) // nullable сделать
         => ExecuteWithSave(() =>
         {
             var note = GetNoteAndThrowIfNotFound(id);

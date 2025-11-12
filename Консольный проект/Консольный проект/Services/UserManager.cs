@@ -6,8 +6,8 @@ namespace Консольный_проект.Services;
 
 public class UserManager : IUserManager
 {
-    private User _user = null;
-    private const string _userFile = "user.json";
+    private User _user = null; //nullable
+    private const string _userFile = "user.json"; //имя
 
     public User Register(string name)
     {

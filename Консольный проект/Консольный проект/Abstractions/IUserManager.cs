@@ -6,5 +6,5 @@ public interface IUserManager
 {
     public User Login (); 
     public User Register (string name);
-        
+        // лишняя строчка пустая
 }

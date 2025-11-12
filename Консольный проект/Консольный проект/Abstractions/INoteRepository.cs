@@ -7,7 +7,7 @@ public interface INoteRepository
     List<Note> GetAllNotes();
     public Note GetNoteById(int id);
     public void AddNote(string? title, string? description, DateTime createdDate, User user);
-    public void UpdateNote(int id, string title = null, string description = null);
+    public void UpdateNote(int id, string title = null, string description = null); // Тут явно просится nullable поля
     public void DeleteNote(int id); 
     public void CompleteNote(int id);
 }
