@@ -11,7 +11,7 @@ internal class UiControlService
     private readonly IReadOnlyDictionary<string, Action> _uiCommandsHandlers;
     
     private bool _running = false;
-    private User _user = null;
+    private User? _user = null;
     
     public UiControlService
     (
@@ -93,6 +93,15 @@ internal class UiControlService
         Console.WriteLine("Register"); 
         Console.WriteLine("Enter your name: "); 
         _user = _userManager.Register(Console.ReadLine().Trim()); // валидация на пустую строчку
+        if (string.IsNullOrEmpty(_user?.Name))
+        {
+            Console.WriteLine("Name cannot be empty. Please enter your name.");
+        }
+
+        while (string.IsNullOrEmpty(_user?.Name))
+        {
+            _user = _userManager.Register(_user.Name);
+        }
         Console.WriteLine($"Nice to meet you, {_user.Name}!");
     }
 

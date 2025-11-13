@@ -6,25 +6,25 @@ namespace Консольный_проект.Services;
 
 public class UserManager : IUserManager
 {
-    private User _user = null;
-    private const string _userFile = "user.json";
+    private User? _user = null;
+    private const string UserFile = "user.json";
 
     public User Register(string name)
     {
         User user = new(name);
         _user = user;
-        File.WriteAllText(_userFile,JsonSerializer.Serialize(_user));
+        File.WriteAllText(UserFile,JsonSerializer.Serialize(_user));
         return _user;
     }
 
     public User Login()
     {
-        if (!File.Exists(_userFile))
+        if (!File.Exists(UserFile))
         { 
             return _user;
         }
 
-        var user = File.ReadAllText(_userFile);
+        var user = File.ReadAllText(UserFile);
         if (!string.IsNullOrEmpty(user))
         {
             _user = JsonSerializer.Deserialize<User>(user)!;

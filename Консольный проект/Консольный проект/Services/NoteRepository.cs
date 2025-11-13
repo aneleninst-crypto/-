@@ -8,12 +8,12 @@ namespace Консольный_проект.Services;
 public class NoteRepository : INoteRepository
 {
     private List<Note> _notes;
-    private const string _noteFile = "notes.json";
+    private const string NoteFile = "notes.json";
 
     public NoteRepository()
     {
         InitSaveFileIfNotExists();
-        var notesFromFile = File.ReadAllText(_noteFile);
+        var notesFromFile = File.ReadAllText(NoteFile);
         _notes = JsonSerializer.Deserialize<List<Note>>(notesFromFile);
     }
 
@@ -32,14 +32,14 @@ public class NoteRepository : INoteRepository
         return note;
     }
 
-    public void AddNote(string title, string description, DateTime createdDate, User user)
+    public void AddNote(string? title, string? description, DateTime createdDate, User user)
         => ExecuteWithSave(() =>
         {
             var note = CreateNote(title, description, createdDate, user);
             _notes.Add(note);
         });
 
-    public void UpdateNote(int id, string title = null, string description = null)
+    public void UpdateNote(int id, string? title = null, string? description = null)
         => ExecuteWithSave(() =>
         {
             var note = GetNoteAndThrowIfNotFound(id);
@@ -75,9 +75,9 @@ public class NoteRepository : INoteRepository
 
     private static void InitSaveFileIfNotExists()
     {
-        if (!File.Exists(_noteFile))
+        if (!File.Exists(NoteFile))
         {
-            using (var writer = new StreamWriter(_noteFile))
+            using (var writer = new StreamWriter(NoteFile))
             {
                 var empty = new List<Note>();
                 writer.Write(JsonSerializer.Serialize(empty));
@@ -93,7 +93,7 @@ public class NoteRepository : INoteRepository
 
     private void Save()
     {
-        File.WriteAllText(_noteFile, JsonSerializer.Serialize(_notes));
+        File.WriteAllText(NoteFile, JsonSerializer.Serialize(_notes));
     }
     
     private Note GetNoteAndThrowIfNotFound(int id)
